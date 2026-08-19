@@ -13,3 +13,4 @@ for storing buffer -> goto imagekit docs -> use nodejs -> see instructions
 for dynamic services -> use a seperate folder called services.
 
 to use dotenv, npm i dotenv 
+to remove cors error, npm i cors

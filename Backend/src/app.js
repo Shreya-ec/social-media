@@ -2,14 +2,13 @@ const express = require('express');
 const multer = require('multer');
 const uploadFile = require('./services/storage.service');
 const postModel = require('./models/post.model');
+const cors = require('cors');
 
 const app = express();
+app.use(cors());  // middleware to allow cross-origin requests from frontend, PLACE IT FIRST BEFORE OTHER ROUTES, OTHERWISE IT WON'T WORK
+app.use(express.json());  // --> used for data in raw format
 
-// --> used for data in raw format
-app.use(express.json());
-
-// we have data in form-data, using another middleware
-const upload = multer({storage: multer.memoryStorage()})
+const upload = multer({storage: multer.memoryStorage()}) // we have data in form-data, using another middleware
 
 // upload.single('<key-name>')
 app.post('/create-post', upload.single('image'), async (req, res)=> {
